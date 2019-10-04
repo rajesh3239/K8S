@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: hello-svc
   labels:
-    app: nginx
+    app: devopsnginx
 spec:
   type: NodePort
   ports:
@@ -11,4 +11,4 @@ spec:
     nodePort: 30001
     protocol: TCP
   selector:
-    app: nginx
+    app: devopsnginx

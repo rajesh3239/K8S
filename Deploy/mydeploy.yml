@@ -1,17 +1,18 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: myjavaapp-rc
+  name: myjavaapp-deploy
+  labels:
+    app: myjavaapp
 spec:
   replicas: 2
   selector:
-    app: myjavaapp
-    version: 2.7.02
+    matchLabels:
+      app: myjavaapp
   template:
     metadata:
       labels:
         app: myjavaapp
-        version: 2.7.02
     spec:
       containers:
       - name: myjavaapp-container

@@ -19,7 +19,7 @@ Firstly we have to PAUSE the deployment
 
 Now, Enter below command
 
-# kubectl set resources deployment.v1.apps/myjavaapp-deploy-c=myjavaapp-container   --limits =cpu=200m, memory=512mi
+# kubectl set resources deployment.v1.apps/myjavaapp-deploy-c=myjavaapp-container   --limits =cpu=200m, memory=512Mi
 
 And, start the service
 

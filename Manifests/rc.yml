@@ -3,13 +3,13 @@ kind: ReplicationController
 metadata:
   name: hello-rc
 spec:
-  replicas: 5
+  replicas: 3
   selector:
-    app: nginx
+    app: devopsnginx
   template:
     metadata:
       labels:
-        app: nginx
+        app: devopsnginx
     spec:
       containers:
       - name: hello-pod

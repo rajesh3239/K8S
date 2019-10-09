@@ -1,0 +1,53 @@
+For Update without opening of File
+
+# kubectl --record deployment.apps/myjavaapp-deploy set image deployment.v1.apps/myjavaapp-deploy myjavaapp-container=rajesh3239/javamaha:2
+
+
+For RollBack
+
+#kubectl set image deployment.v1.apps/myjavaapp-deploy myjavaapp-container=rajesh3239/javamaha:1 --record=true
+
+OR
+
+# kubectl rollout undo deployment myjavaapp-deploy --to-revision=1
+
+
+Restricting the usage of  CPU and  MEMORY
+Firstly we have to PAUSE the deployment
+
+#kubectl rollout pause deployment.v1.apps/myjavaap-deploy
+
+Now, Enter below command
+
+# kubectl set resources deployment.v1.apps/myjavaapp-deploy-c=myjavaapp-container   --limits =cpu=200m, memory=512mi
+
+And, start the service
+
+#kubectl rollout resume deployment.v1.apps/myjavaapp-deploy
+
+
+Scaling in Deployment
+
+#kubectl scale deployment.v1.apps/myjavaapp-deploy  --replicas=4
+
+
+AutoScaling
+
+#kubectl autoscale deployment myjavaapp-deploy  --cpu-percent=10 --min=1 --max=10
+
+USING OF HPA  {Horizontal Pod Accelerator}
+By using this we can KNOW about PODS scaling Status
+ 
+#kubectl get hpa
+
+#kubectl describe hpa
+
+WE CAN RESTRICT THE USAGE OF CPU and MEMORY by using Manifest File also for that
+
+resources:
+         requests:
+           memory: "100Mi"
+           cpu: "150m"
+         limits:
+           memory: "150Mi"
+           cpu: "200m"  
